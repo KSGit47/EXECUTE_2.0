@@ -268,38 +268,35 @@
                                        
 									</select>
                                             <select class="weeklydata-select" name="genres" id="genres">
-																																	<option value="All India-Offline"  selected="selected">All India-Offline</option>
-																							<option value="AP/Telangana" >AP/Telangana</option>
-																							<option value="Assam/North East/Sikkim" >Assam/North East/Sikkim</option>
-																							<option value="Bihar/Jharkhand" >Bihar/Jharkhand</option>
+																																	<option value="Offline"  selected="selected">Offline</option>
+																							
+																							<option value="GZB" >Ghaziabad</option>
 																							<option value="Delhi" >Delhi</option>
-																							<option value="Guj /D&D /DNH" >Guj /D&D /DNH</option>
-																							<option value="HSM" >HSM</option>
-																							<option value="Karnataka" >Karnataka</option>
-																							<option value="Kerala" >Kerala</option>
-																							<option value="Mah/Goa" >Mah/Goa</option>
-																							<option value="Mega Cities" >Mega Cities</option>
-																							<option value="MP/Chhattisgarh" >MP/Chhattisgarh</option>
-																							<option value="Odisha" >Odisha</option>
-																							<option value="Pun/Cha" >Pun/Cha</option>
-																							<option value="Rajasthan" >Rajasthan</option>
-																							<option value="South" >South</option>
-																							<option value="TN/Pondicherry" >TN/Pondicherry</option>
-																							<option value="UP/Uttarakhand" >UP/Uttarakhand</option>
-																							<option value="West Bengal" >West Bengal</option>
+																							
 																														</select>
-                                                                                                                        <form>
+                                                                                                                        <br>
+                                                                                                                        <br>
+                                                                                                                        <h2 style="color:black; background-color:#01adef; padding:5px;font-size:25px; border-radius: 10px;"> NEED AN ITEM?</h2>
+                                                                                                                        <form action="#">
                                                                                                                             <div class="mb-3">
-                                                                                                                              <label for="exampleInputEmail1" class="form-label">Name</label>
-                                                                                                                              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                                                                                                              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                                                                                                                <br><br>
+                                                                                                                              <label for="name" class="form-label" style="color:white;" >Name -</label>
+                                                                                                                              <input type="text" class="form-control" id="name" name="name" >
+                                                                                                                              
                                                                                                                             </div>
                                                                                                                             <div class="mb-3">
-                                                                                                                              <label for="exampleInputPassword1" class="form-label">Item Needed</label>
-                                                                                                                              <input type="text" class="form-control" id="exampleInputPassword1">
+                                                                                                                                
+                                                                                                                              <label for="item" class="form-label" style="color:white;">Item Needed -</label>
+                                                                                                                              <input type="text" class="form-control" id="item" name="item">
+                                                                                                                            </div>
+                                                                                                                            <div class="mb-3">
+
+                                                                                                                              <label for="email" class="form-label" style="color:white;" >Email -</label>
+                                                                                                                              <input type="text" class="form-control" id="email" name="email" >
+                                                                                                                              
                                                                                                                             </div>
                                                                                                                             
-                                                                                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                                                                                            <button type="button" onclick="saveData()" id="save_btn" class="btn btn-primary">Submit</button>
                                                                                                                           </form>
                                                         
 
@@ -1843,6 +1840,32 @@
             
         </footer>
     </div>
+    <script>
+        function saveData()
+        {
+        let name,item,email;
+        name=document.getElementById("name").value;
+        item=document.getElementById("item").value;
+        email=document.getElementById("email").value;
+        
+        
+        
+        let user_records=new Array();
+        user_records=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+        
+        
+        
+          user_records.push({
+          "name":name,
+          "item":item,
+          "email":email
+          
+        })
+        localStorage.setItem("users",JSON.stringify(user_records));
+        }
+        
+        
+                  </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script type="text/javascript">
         const _URL = "https://www.barcindia.co.in/"
@@ -1858,7 +1881,11 @@
     <script type="text/javascript">
         var _G_RECAPTCHA_API_KEY = "6Ld7RbEZAAAAAKjznFeogsQ9SylGYFb2RMsDSv3n";
     </script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6Ld7RbEZAAAAAKjznFeogsQ9SylGYFb2RMsDSv3n"></script>
+   
+   <script src="https://www.google.com/recaptcha/api.js?render=6Ld7RbEZAAAAAKjznFeogsQ9SylGYFb2RMsDSv3n"></script>
+
+   
 </body>
+
 
 </html>
